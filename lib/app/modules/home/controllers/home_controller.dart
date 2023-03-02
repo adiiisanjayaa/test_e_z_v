@@ -50,6 +50,7 @@ class HomeController extends GetxController {
         return false;
       }
     }
+    getProduct();
     return false;
   }
 }

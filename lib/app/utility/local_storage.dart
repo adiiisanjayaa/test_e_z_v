@@ -10,7 +10,7 @@ class LocalStorage {
     try {
       final prefs = await SharedPreferences.getInstance();
       var newData = data.toJson();
-      await prefs.setString(StorageNames.productsId, json.encode(newData));
+      await prefs.setString(StorageNames.modelProduct, json.encode(newData));
     } catch (e) {
       log("error $e");
     }
@@ -19,7 +19,7 @@ class LocalStorage {
   static Future<ModelProduct?> getAllData() async {
     try {
       final prefs = await SharedPreferences.getInstance();
-      var data = prefs.getString(StorageNames.productsId);
+      var data = prefs.getString(StorageNames.modelProduct);
       if (data != null) {
         return ModelProduct.fromJson(json.decode(data));
       }
