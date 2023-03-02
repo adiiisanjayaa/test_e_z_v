@@ -52,10 +52,22 @@ class HomeView extends GetView<HomeController> {
                                             height: 100,
                                           ),
                                         ),
-                                        const Icon(
-                                          Icons.favorite_border,
-                                          color: Colors.white,
-                                        ).marginAll(10),
+                                        FutureBuilder<bool>(
+                                            future: controller.isFav(data),
+                                            builder: (context, snapshot) {
+                                              if (snapshot.hasData) {
+                                                return GestureDetector(
+                                                  onTap: () {
+                                                    controller.save(data);
+                                                  },
+                                                  child: Icon(
+                                                    snapshot.data! ? Icons.favorite : Icons.favorite_border,
+                                                    color: snapshot.data! ? Colors.red : Colors.white,
+                                                  ).marginAll(10),
+                                                );
+                                              }
+                                              return const SizedBox.shrink();
+                                            }),
                                       ],
                                     )
                                   : null,

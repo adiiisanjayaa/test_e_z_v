@@ -38,10 +38,15 @@ class DetailProductView extends GetView<DetailProductController> {
                                     fit: BoxFit.cover,
                                   ),
                                 ),
-                                const Icon(
-                                  Icons.favorite_border,
-                                  color: Colors.white,
-                                ).marginAll(10),
+                                GestureDetector(
+                                  onTap: () {
+                                    controller.save();
+                                  },
+                                  child: Icon(
+                                    controller.isFavorite ? Icons.favorite : Icons.favorite_border,
+                                    color: controller.isFavorite ? Colors.red : Colors.white,
+                                  ).marginAll(10),
+                                ),
                               ],
                             )
                           : null,
