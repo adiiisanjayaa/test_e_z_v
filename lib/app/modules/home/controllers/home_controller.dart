@@ -24,7 +24,6 @@ class HomeController extends GetxController {
     } else {
       products = await LocalStorage.getAllData();
     }
-
     loading(false);
   }
 
@@ -38,6 +37,7 @@ class HomeController extends GetxController {
       await LocalStorage.saveToLocal(product.id!);
       return isFav(product);
     }
+    getProduct();
     update();
   }
 
@@ -50,7 +50,6 @@ class HomeController extends GetxController {
         return false;
       }
     }
-    getProduct();
     return false;
   }
 }
